@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
   end
   def upload
   	file = params[:file]
+  	blah = ""
   	inRollCall = false
   	inPublicComment = false
 		f = file.open
