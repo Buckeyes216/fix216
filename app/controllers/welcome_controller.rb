@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
   def upload
   	file = params[:file]
   	inRollCall = false
+  	inPublicComment = false
 		f = file.open
 		rollpara = ""
 		@resolutions=""
@@ -14,6 +15,7 @@ class WelcomeController < ApplicationController
 		inMotion = false
 		@meeting = Meeting.new
 		header =false
+		@publiccomment = ""
 		f.each_line do |line|
 			line=line.encode!('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
 			line = line.delete "\r\n"
@@ -46,7 +48,7 @@ class WelcomeController < ApplicationController
 					@resolutions=word[/R\d\d\d\d-\d\d\d\d/]
 				end
 			end
-			if line.include? 'On a motion'
+			if line.include? 'motion'
 				inMotion = true
 			end
 			if line.chomp.empty? && inMotion = true
@@ -65,6 +67,34 @@ class WelcomeController < ApplicationController
 			if inMotion
 				@inMotionpara+= line + "\n"
 			end
+			if line.include? 'ADJOURNMENT' 
+				if inPublicComment
+					if @meeting.publiccomment == nil
+						@meeting.publiccomment = ""
+					end
+					@meeting.publiccomment += @publiccomment.gsub(/No public comments were given./,'')
+					inPublicComment = false
+				end
+			end
+			if line.include? 'APPROVAL OF MINUTES' 
+				if inPublicComment
+					if @meeting.publiccomment == nil
+						@meeting.publiccomment = ""
+					end
+					@meeting.publiccomment += @publiccomment.gsub(/No public comments were given./,'')
+					inPublicComment = false
+				end
+			end
+
+			if inPublicComment
+				@publiccomment += line.chomp
+			end
+			if line.include? 'PUBLIC COMMENT'
+				inPublicComment = true
+			end
+
+
+
 		end	
 		rollpara.split('.').each do |x|
 			if x.include? 'absent'
@@ -86,18 +116,24 @@ class WelcomeController < ApplicationController
 		@meeting.save
 	end
 	def meetings
-		@meetings = Meeting.select(:name,:date).distinct
+		@committee = params[:name]
+		@jsonmeetingarray = Array.new
+		@meetings = Meeting.select(:name,:date,:publiccomment).distinct.where(name: @committee)
 		@meetings.each do |meeting|			
 			@absents = Absent.select(:name).distinct.where(meeting: meeting.name,date:meeting.date)
 			@date = meeting.date
 			@name=meeting.name.delete "\r\n"
 			@name=@name.delete "\u0026"
 			@events = Motions.select(:name,:description).distinct.where(meeting: meeting.name, date: meeting.date)
-			jsonmeeting = Jsonmeeting.new(@name,@date,@absents, @events)
+			jsonmeeting = Jsonmeeting.new(@name,@date,@absents, @events, meeting.publiccomment)
 			@absents = jsonmeeting.absentMembers
 			@events = jsonmeeting.events
 			@json = jsonmeeting.to_json
+			@jsonmeetingarray.push(@json)
 		end
+		@jsonmeetinglist = Jsonmeetinglist.new("CUYAHOGA COUNTY FINANCE & BUDGETING COMMITTEE MEETING ", @jsonmeetingarray, "BLAH")
+		@json = @jsonmeetinglist.to_json
+
 
 
 

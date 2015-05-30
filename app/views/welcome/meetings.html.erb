@@ -1,4 +1,4 @@
-<h1> HI KATE </h1>
+<%= @committee %>
 <table>
 <% @meetings.each do |meeting| %>
 	<tr>
@@ -18,4 +18,10 @@
 	</tr>
 <%end%>
 </table>
-<%= @json %>
+<table>
+<% @jsonmeetingarray.each do |meeting| %>
+	<tr>
+		<%= meeting %>
+	</tr>
+<% end %>
+</table>

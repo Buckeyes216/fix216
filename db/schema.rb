@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530051815) do
+ActiveRecord::Schema.define(version: 20150530135152) do
 
   create_table "absents", force: true do |t|
     t.datetime "created_at"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150530051815) do
     t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "publiccomment"
   end
 
   create_table "motions", force: true do |t|
