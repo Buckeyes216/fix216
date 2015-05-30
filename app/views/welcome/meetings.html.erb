@@ -9,45 +9,44 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2"> <%= @committee %> </div>
 		</div>
-			<% @jsonmeetingarray.each do |meeting| %>
-			<div class="container">
+		<% @jsonmeetingarray.each do |meeting| %>
+		<div class="container">
 			<div class ="row">
-				<div class="col-md-4 center-block">
-      			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
-      				<% meeting.absentMembers.each do |absent| %>
-      				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      				<% end %>
-      			 Public Input:  
-      				<% if meeting.publiccomment.length > 10 %>
-      				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>	
-      				<% else %>
-      				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>	
-      				<% end %>
-
-						<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
-							<li>
-								Events
-								<ul>
-									<% meeting.events.each do |event| %>
-										<li><%=event.name %> <%= event.description %></li>
-									<% end %>
-								</ul>
-							</li>
-							<li>
-								Members Absent:
-								<ul>
-								<% meeting.absentMembers.each do |member| %>
-									<li> <%=member.name%></li>
-								<%end%>
-								</ul>
-							</li>
-							<br>
-							<li>
-								Public Input
-								<br>
-								<%= meeting.publiccomment %>
+				<div class="col-12" style="text-align:center;">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
+					<% meeting.absentMembers.each do |absent| %>
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					<% end %>
+					Public Input:  
+					<% if meeting.publiccomment.length > 10 %>
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>	
+					<% else %>
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>	
+					<% end %>
+					<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
+						<li>
+							Events
+							<ul>
+								<% meeting.events.each do |event| %>
+									<li><%=event.name %> <%= event.description %></li>
+								<% end %>
 							</ul>
+						</li>
+						<li>
+							Members Absent:
+							<ul>
+							<% meeting.absentMembers.each do |member| %>
+								<li> <%=member.name%></li>
+							<%end%>
+							</ul>
+						</li>
+						<br>
+						<li>
+							Public Input
+							<br>
+							<%= meeting.publiccomment %>
 						</ul>
+					</ul>
 				</div>
 			</div>
 		</div>
