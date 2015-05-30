@@ -1,6 +1,11 @@
 About
 =================================
-Coming soon.
+This web application accepts file uploads of minutes from the [Cuyahoga County Council meeting calendar](http://council.cuyahogacounty.us/en-US/events-calendar.aspx). The app parses throught these minutes, sorts them by committee, and provides the following pieces of data for each meeting:
+* Date
+* Council members absent
+* Whether public opinion/input was provided
+* The public opinion/input
+* Events / Resolutions
 
 Authorship
 =================================
