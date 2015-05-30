@@ -6,14 +6,18 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2"> <%= @committee %> </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12" style="text-align:center;"> <%= @committee %> </div>
+			</div>
 		</div>
+		
 		<% @jsonmeetingarray.each do |meeting| %>
+		
 		<div class="container">
 			<div class ="row">
 				<div class="col-12" style="text-align:center;">
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
 					<% meeting.absentMembers.each do |absent| %>
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					<% end %>
