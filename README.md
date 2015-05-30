@@ -1,10 +1,13 @@
-== About
+About
+=================================
 Coming soon.
 
-== Authorship
+Authorship
+=================================
 Creating by Tom Carlin and [Kevin Payravi](www.kevinpayravi.com).
 
-== Tech
+Tech
+=================================
 Built with love using:
 * [Ruby on Rails](http://rubyonrails.org/)
 * [Bootstrap](http://getbootstrap.com/)
