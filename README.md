@@ -9,7 +9,7 @@ This web application was created for [Hack Cleveland](http://www.hackcleveland.o
 
 Authorship
 =================================
-Creating by Tom Carlin and [Kevin Payravi](www.kevinpayravi.com).
+Creating by Tom Carlin and [Kevin Payravi](http://www.kevinpayravi.com).
 
 Tech
 =================================
