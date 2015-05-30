@@ -1,0 +1,8 @@
+<h1>Hello, Rails!</h1>
+<%= form_tag welcome_upload_path, multipart: true do %>
+  <label for="file">File to Upload</label> <%= file_field_tag "file" %>
+  <%= submit_tag %>
+<% end %>
+<%= link_to 'My Blog', controller: 'articles' %>
+<%= @lines %>
+<%= @resolutions %>

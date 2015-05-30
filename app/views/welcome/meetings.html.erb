@@ -1,0 +1,21 @@
+<h1> HI KATE </h1>
+<table>
+<% @meetings.each do |meeting| %>
+	<tr>
+		<td><%=meeting.name %></td>
+		<td><%=meeting.date %></td>
+	</tr>
+<%end%>
+<% @absents.each do |absent| %>
+	<tr>
+		<td><%=absent.name %></td>
+	</tr>
+<%end%>
+<% @events.each do |event| %>
+	<tr>
+		<td><%=event.name %></td>
+		<td><%=event.description %></td>
+	</tr>
+<%end%>
+</table>
+<%= @json %>
