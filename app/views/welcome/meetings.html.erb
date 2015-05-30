@@ -1,45 +1,47 @@
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	</head>
 	<body>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
 		<div>
-		<% @jsonmeetingarray.each do |meeting| %>
-			<div class="navbar navbar-default navbar-fixed-top" style="text-align:center;width:500px;" role="navigation">
-				<div class="btn-group" style="width:500px;">
-					<br>
-					<a class="btn dropdown-toggle" data-toggle="dropdown" style="width:100%;" href="#">
-						<%= meeting.date %>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attendance: 
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Public Input:
-					</a>
-					<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
-						<li>
-							Members Present:
-							<ul>
-								<li>Bob</li>
-								<li>Joe</li>
-								<li>Smith</li>
-							</ul>
-						</li>
+			<% @jsonmeetingarray.each do |meeting| %>
+				<div class="navbar navbar-default navbar-fixed-top" style="text-align:center;width:500px;" role="navigation">
+					<div class="btn-group" style="width:500px;">
 						<br>
-						<li>
-							Members Absent:
-							<ul>
-								<li>Bob</li>
-								<li>Joe</li>
-								<li>Smith</li>
-							</ul>
-						</li>
-					</ul>
+						<a class="btn dropdown-toggle" data-toggle="dropdown" style="width:100%;" href="#">
+							<%= meeting.date %>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attendance: 
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Public Input:
+						</a>
+						<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
+							<li>
+								Members Present:
+								<ul>
+									<li>Bob</li>
+									<li>Joe</li>
+									<li>Smith</li>
+								</ul>
+							</li>
+							<br>
+							<li>
+								Members Absent:
+								<ul>
+									<li>Bob</li>
+									<li>Joe</li>
+									<li>Smith</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
-		<% end %>
-	</div>
+			<% end %>
+		</div>
 	</body>
 <br>
 <%= @committee %>
