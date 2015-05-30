@@ -12,7 +12,7 @@
 		<% @jsonmeetingarray.each do |meeting| %>
 		<div class="container">
 			<div class ="row">
-				<div class="col-12" style="text-align:center;">
+				<div class="col-md-6 col-md-offset-3" style="text-align:center;">
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
 					<% meeting.absentMembers.each do |absent| %>
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -23,7 +23,8 @@
 					<% else %>
 					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>	
 					<% end %>
-					<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
+					<br>
+					<ul class="dropdown-menu" style="width:485px; text-align:center; padding:20px; position:relative">
 						<li>
 							Events
 							<ul>
