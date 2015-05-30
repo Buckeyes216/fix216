@@ -128,7 +128,7 @@ class WelcomeController < ApplicationController
 			jsonmeeting = Jsonmeeting.new(@name,@date,@absents, @events, meeting.publiccomment)
 			@absents = jsonmeeting.absentMembers
 			@events = jsonmeeting.events
-			@json = jsonmeeting.to_json
+			@json = jsonmeeting
 			@jsonmeetingarray.push(@json)
 			@jsonmeetinglist = Jsonmeetinglist.new(@committee, @jsonmeetingarray, "BLAH")
 			@json = @jsonmeetinglist.to_json

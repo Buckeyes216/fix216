@@ -1,57 +1,46 @@
 
-	<body>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-		<div class="navbar navbar-default navbar-fixed-top" style="text-align:center;width:500px;" role="navigation">
-			<div class="btn-group" style="width:500px;">
-				<br>
-				<a class="btn dropdown-toggle" data-toggle="dropdown" style="width:100%;" href="#">
-					Date: JANUARY 1, 2015
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attendance: 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Public Input:
-				</a>
-				<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
-					<li>
-						Members Present:
-						<ul>
-							<li>Bob</li>
-							<li>Joe</li>
-							<li>Smith</li>
-						</ul>
-					</li>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<body>
+		<div>
+		<% @jsonmeetingarray.each do |meeting| %>
+			<div class="navbar navbar-default navbar-fixed-top" style="text-align:center;width:500px;" role="navigation">
+				<div class="btn-group" style="width:500px;">
 					<br>
-					<li>
-						Members Absent:
-						<ul>
-							<li>Bob</li>
-							<li>Joe</li>
-							<li>Smith</li>
-						</ul>
-					</li>
-				</ul>
+					<a class="btn dropdown-toggle" data-toggle="dropdown" style="width:100%;" href="#">
+						<%= meeting.date %>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attendance: 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Public Input:
+					</a>
+					<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
+						<li>
+							Members Present:
+							<ul>
+								<li>Bob</li>
+								<li>Joe</li>
+								<li>Smith</li>
+							</ul>
+						</li>
+						<br>
+						<li>
+							Members Absent:
+							<ul>
+								<li>Bob</li>
+								<li>Joe</li>
+								<li>Smith</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		<% end %>
+	</div>
+	</body>
+<br>
 <%= @committee %>
-<table>
-<% @meetings.each do |meeting| %>
-	<tr>
-		<td><%=meeting.name %></td>
-		<td><%=meeting.date %></td>
-	</tr>
-<%end%>
-<% @absents.each do |absent| %>
-	<tr>
-		<td><%=absent.name %></td>
-	</tr>
-<%end%>
-<% @events.each do |event| %>
-	<tr>
-		<td><%=event.name %></td>
-		<td><%=event.description %></td>
-	</tr>
-<%end%>
-</table>
-<table>
-	<tr>
-		<%= @json %>
-	</tr>
-</table>
+
