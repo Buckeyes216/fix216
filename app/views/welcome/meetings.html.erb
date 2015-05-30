@@ -1,28 +1,16 @@
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
 		<title>Cuyahoga County Meeting Stats</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="An overview of all Cuyahoga County council and committee meetings.">
 		<meta name="author" content="Tom Carlin & Kevin Payravi">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	</head>
-	<body>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
-		<div>
 			<% @jsonmeetingarray.each do |meeting| %>
-				<div class="navbar navbar-default navbar-fixed-top" style="text-align:center; width:500px;" role="navigation">
-					<div class="btn-group" style="width:500px;">
-						<br>
-						<a class="btn dropdown-toggle" data-toggle="dropdown" style="width:100%;" href="#">
-							<%= meeting.date %>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attendance: 
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Public Input:
-						</a>
+			<div class="container">
+			<div class ="row">
+				<div class="col-md-4 center-block">
+      			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">P<%= meeting.date %> Attendance: Public Input: <span class="caret"></span></button>	
 						<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
 							<li>
 								Members Present:
@@ -42,10 +30,14 @@
 								</ul>
 							</li>
 						</ul>
-					</div>
 				</div>
-			<% end %>
+			</div>
 		</div>
+			<% end %>
+
+						<div class="col-md-6 col-md-3">
+							<p>interestin</p>
+</div>
 	</body>
 <br>
 <%= @committee %>
