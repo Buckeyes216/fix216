@@ -75,6 +75,7 @@ class WelcomeController < ApplicationController
 					end
 					@meeting.publiccomment += @publiccomment.gsub(/No public comments were given./,'')
 					inPublicComment = false
+					@publiccomment = ""
 				end
 			end
 			if line.include? 'APPROVAL OF MINUTES' 
@@ -84,6 +85,7 @@ class WelcomeController < ApplicationController
 					end
 					@meeting.publiccomment += @publiccomment.gsub(/No public comments were given./,'')
 					inPublicComment = false
+					@publiccomment = ""
 				end
 			end
 

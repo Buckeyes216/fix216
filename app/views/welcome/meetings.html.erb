@@ -10,25 +10,40 @@
 			<div class="container">
 			<div class ="row">
 				<div class="col-md-4 center-block">
-      			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">P<%= meeting.date %> Attendance: Public Input: <span class="caret"></span></button>	
+      			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><%= meeting.date %> Attendance:
+      				<% meeting.absentMembers.each do |absent| %>
+      				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      				<% end %>
+      			 Public Input:  
+      				<% if meeting.publiccomment.length > 10 %>
+      				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>	
+      				<% else %>
+      				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>	
+      				<% end %>
+
 						<ul class="dropdown-menu" style="width:485px; text-align:left; padding:20px; position:relative">
 							<li>
-								Members Present:
+								Events
 								<ul>
-									<li>Bob</li>
-									<li>Joe</li>
-									<li>Smith</li>
+									<% meeting.events.each do |event| %>
+										<li><%=event.name %> <%= event.description %></li>
+									<% end %>
+								</ul>
+							</li>
+							<li>
+								Members Absent:
+								<ul>
+								<% meeting.absentMembers.each do |member| %>
+									<li> <%=member.name%></li>
+								<%end%>
 								</ul>
 							</li>
 							<br>
 							<li>
-								Members Absent:
-								<ul>
-									<li>Bob</li>
-									<li>Joe</li>
-									<li>Smith</li>
-								</ul>
-							</li>
+								Public Input
+								<br>
+								<%= meeting.publiccomment %>
+							</ul>
 						</ul>
 				</div>
 			</div>
