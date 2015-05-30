@@ -130,12 +130,8 @@ class WelcomeController < ApplicationController
 			@events = jsonmeeting.events
 			@json = jsonmeeting.to_json
 			@jsonmeetingarray.push(@json)
+			@jsonmeetinglist = Jsonmeetinglist.new(@committee, @jsonmeetingarray, "BLAH")
+			@json = @jsonmeetinglist.to_json
 		end
-		@jsonmeetinglist = Jsonmeetinglist.new("CUYAHOGA COUNTY FINANCE & BUDGETING COMMITTEE MEETING ", @jsonmeetingarray, "BLAH")
-		@json = @jsonmeetinglist.to_json
-
-
-
-
 	end
 end
